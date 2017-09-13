@@ -30,7 +30,7 @@
 
     h1{
       font-family: hennyPenny;
-      font-size: 300%;
+      font-size: 150%;
     }
 
     .imgContainer{
@@ -46,20 +46,25 @@
       display:inline-block;
     }
 
-    .divBlocks{
-      margin = 0;
-      padding: 100px;
+    button{
+      border-radius: 100%;
+      background: #FFD700;
     }
 
-    #longTime, #shortTime, #incLongTime, #decLongTime, #timeLongTime, #actualTime{
-      display:inline-block;
+    .divBlocks{
+      margin: 0;
+      padding: 50px;
+      border-radius: 50%;
+      background: #FF4500;
+    }
+
+    #incLongTime, #decLongTime, #timeLongTime{
+      display: inline-block;
       font-family: hennyPenny;
     }
     #longTime{
-      float:left;
     }
     #shortTime{
-      float: right;
     }
 
   </style>
@@ -74,22 +79,34 @@
     <h1>Pomodoro Clock</h1>
   </div>
   <div>
-    <div id = "longTime" class="divBlocks">
+    <div id = "longTime" class="divBlocks" style="display: inline-block">
       <h2 id = "textLongTime">Tempo Pomodoro</h2>
-      <button id="incLongTime">+</button>
-      <h3 id="timeLongTime">2</h2>
-      <button id ="decLongTime">-</button>
+      <div style ="text-align: center">
+        <button id="incLongTime">+</button>
+        <h3 id="timeLongTime">25</h2>
+        <button id ="decLongTime">-</button>
+      </div>
     </div>
-    <div id = "shortTime" class="divBlocks">
+    <div id = "shortTime" class="divBlocks" style="display: inline-block">
       <h2 id = "textShortTime">Tempo Descanso</h2>
-      <button id="incShortTime">+</button>
-      <h3 id="timeShortTime">2</h2>
-      <button id ="decShortTime">-</button>
+      <div style ="text-align: center">
+        <button id="incShortTime">+</button>
+        <h3 id="timeShortTime">5</h2>
+        <button id ="decShortTime">-</button>
+      </div>
     </div>
   <div>
-  <div id = "actualTime" class="divBlocks" style="float:left">
-    <button>3</button>
+
+  <div id = "startDiv" class="divBlocks" style="display: inline-block">
+    <h1>Start Button</h1>
   </div>
+  <div id = "timeDiv" class="divBlocks" style="display: inline-block">
+    <h1 id = "actualTime" style="text-align: center">25:30</h1>
+  </div>
+  <div id = "resetDiv" class="divBlocks" style="display: inline-block">
+    <h1>Reset Button</h1>
+  </div>
+
 
   <script>
     console.log("Oi");
@@ -111,6 +128,27 @@
         return parseInt(originText) - 1;
       });
     });
+
+    $("#startDiv").click(function(){
+      var horarioAtual = $("#actualTime").text();
+      console.log("Ola");
+      $("#actualtime").text(countTime(horarioAtual));
+    });
+
+    var countTime = function(horario){
+      console.log("estou aqui");
+      var seconds = 0;
+      horario = horario.split(":");
+      console.log(horario);
+      console.log(horario[0] + ":" + (parseInt(horario[1]) + 1));
+      
+      while(horario[0] != "0" && horario[1] != "0"){
+        setInterval(function () {
+          seconds++;
+        }, 1000);
+        return (horario[0] + ":" + (parseInt(horario[1]) + 1));
+      }
+    }
 
   </script>
 
