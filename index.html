@@ -1,0 +1,117 @@
+<!doctype html>
+
+<head>
+  <script src="jquery-3.2.1.min.js"></script>
+
+  <meta charset="utf-8">
+  <title>PomoClock</title>
+
+  <style>
+    @font-face {
+      font-family: hennyPenny;
+      src: url("./fonts/henny-penny/HennyPenny-Regular.otf");
+    }
+
+    header{
+      text-align: center;
+    }
+
+    .header img {
+      width: 100px;
+      height: 100px;
+      padding-left: 0px;
+    }
+
+    .header h1 {
+      position: relative;
+      top: 18px;
+      left: 10px;
+    }
+
+    h1{
+      font-family: hennyPenny;
+      font-size: 300%;
+    }
+
+    .imgContainer{
+      float: left;
+      width: 100%;
+      height: 100%;
+    }
+
+    body{
+      background-color: #6495ED;
+    }
+    h3, button{
+      display:inline-block;
+    }
+
+    .divBlocks{
+      margin = 0;
+      padding: 100px;
+    }
+
+    #longTime, #shortTime, #incLongTime, #decLongTime, #timeLongTime, #actualTime{
+      display:inline-block;
+      font-family: hennyPenny;
+    }
+    #longTime{
+      float:left;
+    }
+    #shortTime{
+      float: right;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <div class="header">
+    <img class="imgContainer" src="./img/unnamed.png"></img>
+    <h1>Pomodoro Clock</h1>
+  </div>
+  <div>
+    <div id = "longTime" class="divBlocks">
+      <h2 id = "textLongTime">Tempo Pomodoro</h2>
+      <button id="incLongTime">+</button>
+      <h3 id="timeLongTime">2</h2>
+      <button id ="decLongTime">-</button>
+    </div>
+    <div id = "shortTime" class="divBlocks">
+      <h2 id = "textShortTime">Tempo Descanso</h2>
+      <button id="incShortTime">+</button>
+      <h3 id="timeShortTime">2</h2>
+      <button id ="decShortTime">-</button>
+    </div>
+  <div>
+  <div id = "actualTime" class="divBlocks" style="float:left">
+    <button>3</button>
+  </div>
+
+  <script>
+    console.log("Oi");
+    $("#incLongTime").click(function(){
+      $("#timeLongTime").text(function(it, originText){
+        var incrementar = $(this).text();
+        console.log(incrementar);
+        console.log("ola");
+        return parseInt(originText) + 1;
+      });
+    });
+    $("#decLongTime").click(function(){
+      $("#timeLongTime").text(function(it, originText){
+        var incrementar = $(this).text();
+        console.log(incrementar);
+        console.log("ola");
+        if(incrementar == "1")
+          return incrementar;
+        return parseInt(originText) - 1;
+      });
+    });
+
+  </script>
+
+</body>
